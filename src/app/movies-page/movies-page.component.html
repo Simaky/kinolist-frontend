@@ -1,0 +1,29 @@
+<div>
+  <div class="title-block">
+    <div class="title">Film info
+    </div>
+    <div class="title-desc">Movie description and information
+    </div>
+  </div>
+
+  <div class="info-block">
+    <img class="film-image" *ngIf="film.poster_path"
+         src="https://image.tmdb.org/t/p/w600_and_h900_bestv2{{film.poster_path}}">
+    <img class="film-image" *ngIf="!film.poster_path"
+         src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/No_image_available_450_x_600.svg/450px-No_image_available_450_x_600.svg.png">
+    <div>
+      <div class="film-title">
+        {{film.title || film.name}}
+      </div>
+      <div class="film-description-title">
+        Description
+      </div>
+      <div class="film-description">
+        {{film.overview}}
+      </div>
+      <div class="film-small-title">
+        Release date: {{film.release_date || film.first_air_date}}
+      </div>
+    </div>
+  </div>
+</div>

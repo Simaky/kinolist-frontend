@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Edit</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input type="text" matInput [(ngModel)]="user.email" value="data.email">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Username</mat-label>
+    <input type="text" matInput [(ngModel)]="user.username" value="data.username">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>First name</mat-label>
+    <input type="text" matInput [(ngModel)]="user.firstName" value="data.firstName">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Last name</mat-label>
+    <input type="text" matInput [(ngModel)]="user.lastName" value="data.lastName">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Back</button>
+  <button mat-button (click)="onEdit()">Save</button>
+</div>

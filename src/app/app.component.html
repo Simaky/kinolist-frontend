@@ -1,0 +1,75 @@
+<!-- Modal Login -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Login</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p id="modalError" *ngIf="errorMessage">{{errorMessage}}</p>
+        <form class="form-signin">
+          <label for="inputUsername" class="sr-only">Username</label>
+          <input type="text" id="inputUsername" class="form-control" placeholder="Username" [(ngModel)]="username"
+                 name="username"
+                 required
+                 autofocus>
+          <label for="inputPassword" class="sr-only">Password</label>
+          <input type="password" id="inputPassword" class="form-control" placeholder="Password" [(ngModel)]="password"
+                 name="password"
+                 required>
+          <div class="checkbox mb-3">
+            <label>
+              <input type="checkbox" value="remember-me"> Remember me
+            </label>
+          </div>
+          <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="onLogin()">Sign in</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="site-header sticky-top py-1" *ngIf="!(this.router.url==='/registration')">
+  <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+    <a class="py-2" href="#">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+           class="d-block mx-auto">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="14.31" y1="8" x2="20.05" y2="17.94"></line>
+        <line x1="9.69" y1="8" x2="21.17" y2="8"></line>
+        <line x1="7.38" y1="12" x2="13.12" y2="2.06"></line>
+        <line x1="9.69" y1="16" x2="3.95" y2="6.06"></line>
+        <line x1="14.31" y1="16" x2="2.83" y2="16"></line>
+        <line x1="16.62" y1="12" x2="10.88" y2="21.94"></line>
+      </svg>
+    </a>
+    <h5 class="my-0 mr-md-auto font-weight-normal" *ngIf="!userService.getUser()"></h5>
+    <nav class="my-2 my-md-0 mr-md-3">
+      <a class="p-2" data-toggle="modal" data-target="#myModal" *ngIf="!userService.getUser()">Login</a>
+      <div class="nav-item dropdown" *ngIf="userService.getUser()">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+           aria-haspopup="true" aria-expanded="false">
+          {{userService.getUser().username}}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/list/{{userService.getUser().id}}">List</a>
+          <a class="dropdown-item" href="/profile">Profile</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" (click)="onLogout()">Log out</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-outline-primary" routerLink="/registration" *ngIf="!userService.getUser()">Sign up</a>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
+
+<footer class="footer">
+  <div class="container">
+    <span class="text-muted">©2020 - Maksym Prytyka | NLTU diploma work</span>
+  </div>
+</footer>

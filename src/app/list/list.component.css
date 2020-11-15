@@ -1,0 +1,51 @@
+table {
+  width: 100%;
+}
+
+.share-button {
+  position: absolute;
+  bottom: 0;
+}
+
+.fab-button {
+  position: absolute;
+  bottom: 10%;
+  right: 10%;
+}
+
+.list {
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.title-block {
+  margin-bottom: 30px;
+  margin-left: 5.5%;
+  margin-right: 17%;
+}
+
+.list-title {
+  margin-top: 6%;
+  font-family: 'Roboto';
+  font-weight: 900;
+  font-size: 5em;
+}
+
+.list-title-desc {
+  margin-top: 35px;
+  font-family: 'Roboto';
+  font-weight: 300;
+  font-size: 1.5em;
+}
+
+.list-image {
+  width: 48px;
+  height: 68px;
+  background-size: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}

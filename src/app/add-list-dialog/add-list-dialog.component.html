@@ -1,0 +1,36 @@
+<h1 mat-dialog-title>Add</h1>
+<div mat-dialog-content>
+  <mat-form-field class="example-full-width">
+    <input type="text"
+           placeholder="Choose film..."
+           aria-label="Number"
+           matInput
+           [formControl]="myControl"
+           [matAutocomplete]="auto">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      <mat-option *ngFor="let option of filteredOptions " [value]="option.title || option.name"
+                  (onSelectionChange)="setSelectedItem(option)">
+        <img class="img-preview" *ngIf="option.poster_path"
+             src="{{(posterPathPrefix + option['poster_path']) }}"/>
+        <img class="img-preview" *ngIf="!option.poster_path"
+             src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/No_image_available_450_x_600.svg/450px-No_image_available_450_x_600.svg.png"/>
+        {{option['title'] || option['name']}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Score</mat-label>
+    <input type="number" matInput [(ngModel)]="score.rating" value="data.rating">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Progress</mat-label>
+    <input [disabled]="!isTv(selectedItem)" type="number" matInput [(ngModel)]="score.currentState"
+           value="data.currentState">
+  </mat-form-field>
+  <div *ngIf="selectedItem && selectedItem.media_type === 'tv' && selectedItem.seriesCount > 1">Max
+    progress: {{selectedItem.seriesCount}}</div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Back</button>
+  <button mat-button (click)="addUserFilmScore(selectedItem)">Add</button>
+</div>

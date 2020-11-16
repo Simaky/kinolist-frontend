@@ -63,6 +63,7 @@ export class UserFilmsList {
 
   public rating: number;
   public currentState: number;
+  public isRecommended: boolean;
 }
 
 export class Score {

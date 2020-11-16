@@ -18,7 +18,7 @@ import {ToastrService} from 'ngx-toastr';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements AfterViewInit, OnInit {
-  displayedColumns: string[] = ['#', 'imageUrl', 'name', 'rating', 'currentState', 'isRecommended', 'button'];
+  displayedColumns: string[] = ['#', 'imageUrl', 'name', 'rating', 'currentState', 'mediaType', 'isRecommended', 'button'];
   dataSource = new MatTableDataSource([]);
   id: number;
   userName: string;
@@ -105,6 +105,7 @@ export class ListComponent implements AfterViewInit, OnInit {
     userFilmsList.forEach(element => {
       element.currentState = element.score.currentState;
       element.rating = element.score.rating;
+      element.isRecommended = element.score.isRecommended;
     });
     return userFilmsList;
   }

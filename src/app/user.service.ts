@@ -66,13 +66,15 @@ export class UserFilmsList {
 }
 
 export class Score {
-  constructor(rating: number, currentState: number) {
+  constructor(rating: number, currentState: number, isRecommended: boolean) {
     this.rating = rating;
     this.currentState = currentState;
+    this.isRecommended = isRecommended;
   }
 
   public rating: number;
   public currentState: number;
+  public isRecommended: boolean;
 }
 
 export class Film {

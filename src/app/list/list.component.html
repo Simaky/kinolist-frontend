@@ -64,6 +64,16 @@
       </td>
     </ng-container>
 
+    <!-- isRecommended Column -->
+    <ng-container matColumnDef="isRecommended">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Recommendation</th>
+      <td mat-cell *matCellDef="let element">
+        <div *ngIf="element.score.isRecommended">
+          <mat-icon>check_box</mat-icon>
+        </div>
+      </td>
+    </ng-container>
+
     <!-- Button Column -->
     <ng-container matColumnDef="button">
       <th mat-header-cell *matHeaderCellDef></th>

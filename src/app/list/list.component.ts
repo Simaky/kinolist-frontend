@@ -18,7 +18,7 @@ import {ToastrService} from 'ngx-toastr';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements AfterViewInit, OnInit {
-  displayedColumns: string[] = ['#', 'imageUrl', 'name', 'rating', 'currentState', 'button'];
+  displayedColumns: string[] = ['#', 'imageUrl', 'name', 'rating', 'currentState', 'isRecommended', 'button'];
   dataSource = new MatTableDataSource([]);
   id: number;
   userName: string;

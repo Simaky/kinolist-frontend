@@ -17,7 +17,7 @@ export class AddListDialogComponent implements OnInit {
   myControl = new FormControl();
   filteredOptions: Results[] = [];
 
-  score: Score = new Score(0, 0);
+  score: Score = new Score(0, 0, false);
   selectedItem: Results;
   posterPathPrefix = 'https://image.tmdb.org/t/p/w600_and_h900_bestv2';
 
@@ -46,7 +46,7 @@ export class AddListDialogComponent implements OnInit {
       imageUrl = 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/No_image_available_450_x_600.svg/450px-No_image_available_450_x_600.svg.png';
     }
 
-    this.backendService.addFilm(new UserFilmsList(results.id, results.name || results.title, results.overview, imageUrl, results.seriesCount, new Score(this.score.rating, this.score.currentState), results.media_type), this.userService.getUser().id).subscribe(response => {
+    this.backendService.addFilm(new UserFilmsList(results.id, results.name || results.title, results.overview, imageUrl, results.seriesCount, new Score(this.score.rating, this.score.currentState, this.score.isRecommended), results.media_type), this.userService.getUser().id).subscribe(response => {
       if ((response as Response).status === 200) {
         window.location.reload();
       }

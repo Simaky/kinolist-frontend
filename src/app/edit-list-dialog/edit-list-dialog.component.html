@@ -9,6 +9,10 @@
     <input type="number" [disabled]="userFilmsList.seriesCount === 1" matInput
            [(ngModel)]="userFilmsList.score.currentState" value="data.currentState">
   </mat-form-field>
+  <mat-checkbox (change)="userFilmsList.score.isRecommended = $event.checked" [checked]="data.score.isRecommended">
+    Recommend
+    for friends
+  </mat-checkbox>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Back</button>

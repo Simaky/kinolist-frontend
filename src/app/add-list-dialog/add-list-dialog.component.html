@@ -27,9 +27,13 @@
     <input [disabled]="!isTv(selectedItem)" type="number" matInput [(ngModel)]="score.currentState"
            value="data.currentState">
   </mat-form-field>
-  <div *ngIf="selectedItem && selectedItem.media_type === 'tv' && selectedItem.seriesCount > 1">Max
+  <div *ngIf="selectedItem && selectedItem.media_type === 'tv' && selectedItem.seriesCount > 1" style="margin-bottom: 10px">Max
     progress: {{selectedItem.seriesCount}}</div>
 </div>
+<mat-checkbox (change)="score.isRecommended = $event.checked">
+  Recommend
+  for friends
+</mat-checkbox>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Back</button>
   <button mat-button (click)="addUserFilmScore(selectedItem)">Add</button>

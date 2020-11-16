@@ -5,7 +5,7 @@ import {
   HttpRequest,
   HttpErrorResponse
 } from '@angular/common/http';
-import {Observable, throwError} from 'rxjs';
+import {Observable, throwError, timer} from 'rxjs';
 import {retry, catchError} from 'rxjs/operators';
 import {UserService} from './user.service';
 import {Injectable} from '@angular/core';
@@ -23,8 +23,12 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         catchError((error: HttpErrorResponse) => {
           if (error.status === 401) {
             this.userService.setUser(null);
-            window.location.href = '/';
             this.toastr.error('you are not authorized', 'Error');
+
+            const source = timer(3000, 2000);
+            source.subscribe(val => {
+              window.location.href = '/';
+            });
           }
           return throwError(error);
         })

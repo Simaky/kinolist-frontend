@@ -30,6 +30,7 @@ import {MoviesPageComponent} from './movies-page/movies-page.component';
 import {UserProfileEditComponent} from './user-profile-edit/user-profile-edit.component';
 import {UserProfileEditPasswordComponent} from './user-profile-edit-password/user-profile-edit-password.component';
 import {ClipboardModule} from '@angular/cdk/clipboard';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import {ClipboardModule} from '@angular/cdk/clipboard';
     TvsPageComponent,
     MoviesPageComponent,
     UserProfileEditComponent,
-    UserProfileEditPasswordComponent
+    UserProfileEditPasswordComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

@@ -85,11 +85,12 @@ export class ListComponent implements AfterViewInit, OnInit {
     this.backendService.getUserById(this.id).subscribe(response => {
       this.userName = response.username;
     }, error => {
-      console.log(error);
+      if (error.error.status !== 410) {
+        window.location.replace('/notfound');
+      }
     });
   }
 
-  // this.userService.getUser().id
   public getUserFilmList(): void {
     this.backendService.getUserFilmsList(this.id).subscribe(response => {
       this.dataSource.data = this.scoreToVariables(response);
@@ -107,7 +108,6 @@ export class ListComponent implements AfterViewInit, OnInit {
     });
     return userFilmsList;
   }
-
 
   ngAfterViewInit(): void {
   }

@@ -35,7 +35,7 @@ export class UserProfileEditComponent implements OnInit {
       this.toastr.success('Changes saved', 'Success');
       window.location.reload();
     }, error => {
-      this.toastr.error('Internal server error: ' + error.data.message, 'Error');
+      this.toastr.error(error.error.message, 'Error');
     });
   }
 
